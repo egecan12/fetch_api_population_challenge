@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+</head>
+<body>
+
+    <p id="bottle"></p>
+
+
+    <script> 
+
+
+   
+
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+   
+
+       var myData = JSON.parse(xhr.responseText);
+
+       console.log(myData);
+
+       
+       document.getElementById('bottle').textContent = myData;
+
+	}
+});
+
+xhr.open("GET", "https://currency-converter5.p.rapidapi.com/currency/historical/2018-02-09?format=json&to=AUD&from=AUD&amount=1");
+xhr.setRequestHeader("x-rapidapi-host", "currency-converter5.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "d6a181efafmshd05a6589487e3c0p17ef20jsn06dcf63c359a");
+
+xhr.send(data);
+
+
+
+    </script>
+        
+    
+</body>
+
+
+
+
+</html>
